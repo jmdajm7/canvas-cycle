@@ -152,7 +152,7 @@ var CanvasCycle = {
 		this.stop();
 		this.showLoading();
 		
-		var url = 'image.php?file='+name+'&callback=CanvasCycle.processImage';
+		var url = './images/'+name+'.LBM.js';
 		var scr = document.createElement('SCRIPT');
 		scr.type = 'text/javascript';
 		scr.src = url;
