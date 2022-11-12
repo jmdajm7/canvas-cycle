@@ -1,0 +1,6 @@
+.git
+build.bat
+build_exclude.txt
+.LBM.json
+.ogg
+.code-workspace
