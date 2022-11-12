@@ -5,6 +5,115 @@
 
 FrameCount.visible = false;
 
+//#region WallpaperEngine
+var fpsInterval, now, then, elapsed;
+var intervalID, selectedTime, selectedScene, randomEnabled, randomDelay;
+
+window.wallpaperPropertyListener = {
+	applyUserProperties: function (properties) {
+		// SPEED
+		if (properties.speed) {
+			console.log("speed: " + properties.speed.value);
+			
+			CC.setSpeed(properties.speed.value);
+		}
+		
+		// FPS
+		if (properties.fps) {
+			console.log("fps: " + properties.fps.value);
+			
+			CC.settings.targetFPS = properties.fps.value;
+		}
+		
+		// BLENDSHIFT
+		if (properties.blend_shift) {
+			console.log("blend_shift: " + properties.blend_shift.value);
+			
+			if (properties.blend_shift.value) {
+				CC.blendShift = true;
+			}
+			else {
+				CC.blendShift = false;
+			}
+		}
+
+		// STRETCH
+		if (properties.stretch) {
+			console.log("stretch: " + properties.stretch.value);
+
+			document.getElementById("mycanvas").style = properties.stretch.value;
+		}
+		
+		// SOUND
+		if (properties.audio_enabled) {
+			console.log("audio_enabled: " + properties.audio_enabled.value);
+			
+			if (properties.audio_enabled.value) {
+				CC.audioEnabled = true;
+				CC.stopSceneAudio();
+				CC.startSceneAudio();
+			}
+			else {
+				CC.audioEnabled = false;
+				CC.stopSceneAudio();
+			}
+		}
+		
+		// VOLUME
+		if (properties.audio_volume) {
+			console.log("audio_volume: " + properties.audio_volume.value);
+			
+			CC.audioVolume = properties.audio_volume.value;
+			CC.stopSceneAudio();
+			CC.startSceneAudio();
+		}
+		
+		///////////
+		// MODES //
+		///////////
+		
+		// SCENE
+		if (properties.sceneselect) {
+			console.log("sceneselect: " + properties.sceneselect.value);
+			
+			CC.switchScene(properties.sceneselect.value);
+			selectedScene = properties.sceneselect.value;
+		}
+		
+		// RANDOM
+		if (properties.random_mode) {
+			console.log("random_mode: " + properties.random_mode.value);
+			
+			clearInterval(intervalID);
+		
+			if (properties.random_mode.value) {
+				randomEnabled = true;
+				CC.switchScene(Math.floor(Math.random() * 21));
+				intervalID = setInterval(function(){ CC.switchScene(Math.floor(Math.random() * 22)); }, randomDelay * 1000 * 60)
+			}
+			else
+			{
+				randomEnabled = false;
+				// switch back to selected scene
+				console.log("switch back to " + selectedScene);
+				CC.switchScene(selectedScene);
+			}
+		}
+		
+		// RANDOM DELAY
+		if (properties.random_delay) {
+			console.log("random_delay: " + properties.random_delay.value);
+			
+			randomDelay = properties.random_delay.value;
+			if (randomEnabled) {
+				clearInterval(intervalID);
+				intervalID = setInterval(function(){ CC.switchScene(Math.floor(Math.random() * 22)); }, randomDelay * 1000 * 60)
+			}
+		}
+	}
+}
+//#endregion WallpaperEngine
+
 var CanvasCycle = {
 	
 	cookie: new CookieTree(),
