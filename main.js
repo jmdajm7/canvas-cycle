@@ -324,6 +324,7 @@ var CanvasCycle = {
 	
 	repositionContainer: function() {
 		// reposition container element based on inner window size
+		return;
 		var div = $('container');
 		if (div) {
 			this.winSize = getInnerWindowSize();

@@ -24,7 +24,7 @@
 <body>
 	
 	<div id="container">
-		<div id="d_header">
+		<div id="d_header" style="display: none">
 			<div id="d_scene_selector"></div>
 			<div id="d_scene_btns">
 				<div class="button left" onClick="CC.jumpScene(-1)">&lt; Prev</div><div class="button right" onClick="CC.jumpScene(1)">Next &gt;</div>
@@ -36,9 +36,9 @@
 		</div>
 		<div id="d_loading"></div>
 		
-		<canvas id="mycanvas" width="640" height="480" style=""></canvas>
+		<canvas id="mycanvas" width="640" height="480" style="height: 100vh; width: 100vw"></canvas>
 		
-		<div id="d_options">
+		<div id="d_options" style="display: none;">
 			<div class="label">SOUND:</div>
 			<div class="section">
 				<div id="btn_sound_off" class="button left" onClick="CC.setSound(false)">Off</div><div id="btn_sound_on" class="button right selected" onClick="CC.setSound(true)">On</div>
@@ -65,17 +65,8 @@
 			<div id="d_debug"></div>
 		</div>
 		
-		<div class="clear"></div>
+		<!--<div class="clear"></div>-->
 
-	</div>
-	
-	<div id="d_footer" title="http://pixfabrik.com/livingworlds/">
-		<div class="close_x" onMouseUp="document.querySelector('#d_footer').style.display='none';">&times;</div>
-		<a href="http://pixfabrik.com/livingworlds/">
-			<div class="app_icon"></div>
-			<div style="margin-top:5px;"><b>Now available on mobile: Living Worlds for iOS and Android!</b></div>
-			<div>See the original versions of Mark Ferrari's worlds in their full glory!</div>
-		</a>
 	</div>
 		
 	<script language="JavaScript">
@@ -110,6 +101,6 @@
 			// CFInstall.check({ mode: "overlay" });
 		}
 	</script>
-	
+
 </body>
 </html>
