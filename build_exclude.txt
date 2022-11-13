@@ -4,3 +4,4 @@ build_exclude.txt
 .LBM.json
 .ogg
 .code-workspace
+.py
