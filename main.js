@@ -7,7 +7,7 @@ FrameCount.visible = false;
 
 //#region WallpaperEngine
 var fpsInterval, now, then, elapsed;
-var intervalID, selectedTime, selectedScene, randomEnabled, randomDelay;
+var intervalID, selectedScene, randomEnabled, randomDelay;
 
 window.wallpaperPropertyListener = {
 	applyUserProperties: function (properties) {
@@ -30,10 +30,10 @@ window.wallpaperPropertyListener = {
 			console.log("blend_shift: " + properties.blend_shift.value);
 			
 			if (properties.blend_shift.value) {
-				CC.blendShift = true;
+				CC.settings.blendShiftEnabled = true;
 			}
 			else {
-				CC.blendShift = false;
+				CC.settings.blendShiftEnabled = false;
 			}
 		}
 
