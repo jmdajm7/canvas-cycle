@@ -70,92 +70,144 @@
 				"options" : 
 				[
 					{
-						"label" : "January - Winter Forest - Clear",
+						"label" : "Jungle Waterfall - Morning",
 						"value" : "0"
 					},
 					{
-						"label" : "January - Winter Forest - Snow",
+						"label" : "Seascape - Day",
 						"value" : "1"
 					},
 					{
-						"label" : "February - Mountain Stream - Clear",
+						"label" : "Mountain Stream - Morning",
 						"value" : "2"
 					},
 					{
-						"label" : "February - Mountain Stream - Cloudy",
+						"label" : "Winter Forest - Snow",
 						"value" : "3"
 					},
 					{
-						"label" : "March - Monolith Plains - Clear",
+						"label" : "Jungle Waterfall - Rain",
 						"value" : "4"
 					},
 					{
-						"label" : "April - Deep Forest - Clear",
+						"label" : "Mountain Storm - Day",
 						"value" : "5"
 					},
 					{
-						"label" : "April - Deep Forest - Rain",
+						"label" : "Deep Forest - Day",
 						"value" : "6"
 					},
 					{
-						"label" : "May - Jungle Waterfall - Clear",
+						"label" : "Highland Ruins - Rain",
 						"value" : "7"
 					},
 					{
-						"label" : "May - Jungle Waterfall - Cloudy",
+						"label" : "Rough Seas - Day",
 						"value" : "8"
 					},
 					{
-						"label" : "May - Jungle Waterfall - Rain",
+						"label" : "Crystal Caves - Day",
 						"value" : "9"
 					},
 					{
-						"label" : "June - Crystal Caves - Clear",
+						"label" : "Haunted Castle Ruins - Rain",
 						"value" : "10"
 					},
 					{
-						"label" : "July - Desert - Clear",
+						"label" : "Jungle Waterfall - Night",
 						"value" : "11"
 					},
 					{
-						"label" : "July - Desert - Cloudy",
+						"label" : "Mirror Pond - Rain",
 						"value" : "12"
 					},
 					{
-						"label" : "August - Aquarius - Clear",
+						"label" : "Mountain Stream - Night",
 						"value" : "13"
 					},
 					{
-						"label" : "September - Seascape - Clear",
+						"label" : "Aquarius - Day",
 						"value" : "14"
 					},
 					{
-						"label" : "September - Seascape - Cloudy",
+						"label" : "Harbor Town - Night",
 						"value" : "15"
 					},
 					{
-						"label" : "Early October - Haunted Ruins - Clear",
+						"label" : "Deep Forest - Rain",
 						"value" : "16"
 					},
 					{
-						"label" : "Late October - Haunted Ruins - Clear",
+						"label" : "Mountain Fortress - Dusk",
 						"value" : "17"
 					},
 					{
-						"label" : "Late October - Haunted Ruins - Rain",
+						"label" : "Water City Gates - Fog",
 						"value" : "18"
 					},
 					{
-						"label" : "November - Mirror Pond - Clear",
+						"label" : "Seascape - Sunset",
 						"value" : "19"
 					},
 					{
-						"label" : "November - Mirror Pond - Rain",
+						"label" : "Mirror Pond - Morning",
 						"value" : "20"
 					},
 					{
-						"label" : "December - Winter Manor - Clear",
+						"label" : "Island Fires - Dusk",
 						"value" : "21"
+					},
+					{
+						"label" : "Forest Edge - Day",
+						"value" : "22"
+					},
+					{
+						"label" : "Mirror Pond - Afternoon",
+						"value" : "23"
+					},
+					{
+						"label" : "Jungle Waterfall - Afternoon",
+						"value" : "24"
+					},
+					{
+						"label" : "Swamp Cathedral - Day",
+						"value" : "25"
+					},
+					{
+						"label" : "Haunted Castle Ruins - Night",
+						"value" : "26"
+					},
+					{
+						"label" : "Deep Swamp - Day",
+						"value" : "27"
+					},
+					{
+						"label" : "Approaching Storm - Day",
+						"value" : "28"
+					},
+					{
+						"label" : "Pond Ripples - Dawn",
+						"value" : "29"
+					},
+					{
+						"label" : "Ice Wind - Day",
+						"value" : "30"
+					},
+					{
+						"label" : "Mountain Stream - Afternoon",
+						"value" : "31"
+					},
+					{
+						"label" : "Desert Heat Wave - Day",
+						"value" : "32"
+					},
+					{
+						"label" : "Magic Marsh Cave - Night",
+						"value" : "33"
+					},
+					{
+						"label" : "Seascape - Fog",
+						"value" : "34"
 					}
 				],
 				"order" : 108,

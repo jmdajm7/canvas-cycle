@@ -88,8 +88,8 @@ window.wallpaperPropertyListener = {
 		
 			if (properties.random_mode.value) {
 				randomEnabled = true;
-				CC.switchScene(Math.floor(Math.random() * 21));
-				intervalID = setInterval(function(){ CC.switchScene(Math.floor(Math.random() * 22)); }, randomDelay * 1000 * 60)
+				CC.switchScene(Math.floor(Math.random() * 35));
+				intervalID = setInterval(function() { CC.switchScene(Math.floor(Math.random() * 35)); }, randomDelay * 1000 * 60)
 			}
 			else
 			{
@@ -226,8 +226,10 @@ var CanvasCycle = {
 		// switch to new scene (grab menu selection)
 		this.stopSceneAudio();
 		
-		var name = menu.options[menu.selectedIndex].value;
-		this.sceneIdx = menu.selectedIndex;
+		//var name = menu.options[menu.selectedIndex].value;
+		//this.sceneIdx = menu.selectedIndex;
+		var name = scenes[menu].name;
+		this.sceneIdx = menu;
 		
 		if (ua.mobile) {
 			// no transitions on mobile devices, just switch as fast as possible
@@ -276,7 +278,7 @@ var CanvasCycle = {
 		var loading = $('d_loading');
 		loading.style.left = '' + Math.floor( ((this.contentSize.width * this.contentSize.scale) / 2) - 16 ) + 'px';
 		loading.style.top = '' + Math.floor( ((this.contentSize.height * this.contentSize.scale) / 2) - 16 ) + 'px';
-		loading.show();
+		//loading.show();
 	},
 	
 	hideLoading: function() {
