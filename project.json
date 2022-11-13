@@ -45,7 +45,7 @@
 			},
 			"random_delay" : 
 			{
-				"condition" : "random_mode.value == true && calendar_mode.value == false",
+				"condition" : "random_mode.value == true",
 				"fraction" : true,
 				"max" : 60,
 				"min" : 0.5,
@@ -58,7 +58,6 @@
 			},
 			"random_mode" : 
 			{
-				"condition" : "calendar_mode.value == false",
 				"order" : 105,
 				"text" : "Random Mode",
 				"type" : "bool",
