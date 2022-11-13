@@ -151,6 +151,9 @@ var CanvasCycle = {
 	init: function() {
 		// called when DOM is ready
 		if (!this.inited) {
+			// for fps limiting
+			then = Date.now();
+
 			this.inited = true;
 			$('container').style.display = 'block';
 			$('d_options').style.display = 'none';
@@ -343,42 +346,53 @@ var CanvasCycle = {
 	},
 
 	animate: function() {
-		// animate one frame. and schedule next
-		if (this.inGame) {
-			var colors = this.bmp.palette.colors;
-	
-			if (this.settings.showOptions) {
-				for (var idx = 0, len = colors.length; idx < len; idx++) {
-					var clr = colors[idx];
-					var div = $('pal_'+idx);
-					div.style.backgroundColor = 'rgb(' + clr.red + ',' + clr.green + ',' + clr.blue + ')';
+		//#region limit fps
+		fpsInterval = 1000 / this.settings.targetFPS;
+		now = Date.now();
+		elapsed = now - then;
+		requestAnimationFrame( function() { CanvasCycle.animate(); });
+
+		if (elapsed > fpsInterval) {
+			then = now - (elapsed % fpsInterval);
+			//#endregion limit fps
+
+			// animate one frame. and schedule next
+			if (this.inGame) {
+				var colors = this.bmp.palette.colors;
+		
+				if (this.settings.showOptions) {
+					for (var idx = 0, len = colors.length; idx < len; idx++) {
+						var clr = colors[idx];
+						var div = $('pal_'+idx);
+						div.style.backgroundColor = 'rgb(' + clr.red + ',' + clr.green + ',' + clr.blue + ')';
+					}
+			
+					// if (this.clock % this.settings.targetFPS == 0) $('d_debug').innerHTML = 'FPS: ' + FrameCount.current;
+					$('d_debug').innerHTML = 'FPS: ' + FrameCount.current + ((this.highlightColor != -1) ? (' - Color #' + this.highlightColor) : '');
 				}
 		
-				// if (this.clock % this.settings.targetFPS == 0) $('d_debug').innerHTML = 'FPS: ' + FrameCount.current;
-				$('d_debug').innerHTML = 'FPS: ' + FrameCount.current + ((this.highlightColor != -1) ? (' - Color #' + this.highlightColor) : '');
-			}
-	
-			this.bmp.palette.cycle( this.bmp.palette.baseColors, GetTickCount(), this.settings.speedAdjust, this.settings.blendShiftEnabled );
-			if (this.highlightColor > -1) {
-				this.bmp.palette.colors[ this.highlightColor ] = new Color(255, 255, 255);
-			}
-			if (this.globalBrightness < 1.0) {
-				// bmp.palette.fadeToColor( pureBlack, 1.0 - globalBrightness, 1.0 );
-				this.bmp.palette.burnOut( 1.0 - this.globalBrightness, 1.0 );
-			}
-			this.bmp.render( this.imageData, (this.lastBrightness == this.globalBrightness) && (this.highlightColor == this.lastHighlightColor) );
-			this.lastBrightness = this.globalBrightness;
-			this.lastHighlightColor = this.highlightColor;
-	
-			this.ctx.putImageData( this.imageData, 0, 0 );
-	
-			TweenManager.logic( this.clock );
-			this.clock++;
-			FrameCount.count();
-			this.scaleAnimate();
-			if (this.inGame) {
-				// setTimeout( function() { CanvasCycle.animate(); }, 1 );
-				requestAnimationFrame( function() { CanvasCycle.animate(); } );
+				this.bmp.palette.cycle( this.bmp.palette.baseColors, GetTickCount(), this.settings.speedAdjust, this.settings.blendShiftEnabled );
+				if (this.highlightColor > -1) {
+					this.bmp.palette.colors[ this.highlightColor ] = new Color(255, 255, 255);
+				}
+				if (this.globalBrightness < 1.0) {
+					// bmp.palette.fadeToColor( pureBlack, 1.0 - globalBrightness, 1.0 );
+					this.bmp.palette.burnOut( 1.0 - this.globalBrightness, 1.0 );
+				}
+				this.bmp.render( this.imageData, (this.lastBrightness == this.globalBrightness) && (this.highlightColor == this.lastHighlightColor) );
+				this.lastBrightness = this.globalBrightness;
+				this.lastHighlightColor = this.highlightColor;
+		
+				this.ctx.putImageData( this.imageData, 0, 0 );
+		
+				TweenManager.logic( this.clock );
+				this.clock++;
+				FrameCount.count();
+				this.scaleAnimate();
+				if (this.inGame) {
+					// setTimeout( function() { CanvasCycle.animate(); }, 1 );
+					requestAnimationFrame( function() { CanvasCycle.animate(); } );
+				}
 			}
 		}
 	},
