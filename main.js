@@ -49,13 +49,13 @@ window.wallpaperPropertyListener = {
 			console.log("audio_enabled: " + properties.audio_enabled.value);
 			
 			if (properties.audio_enabled.value) {
-				CC.audioEnabled = true;
+				CC.settings.sound = true;
 				CC.stopSceneAudio();
 				CC.startSceneAudio();
 			}
 			else {
-				CC.audioEnabled = false;
 				CC.stopSceneAudio();
+				CC.settings.sound = false;
 			}
 		}
 		
@@ -89,7 +89,7 @@ window.wallpaperPropertyListener = {
 			if (properties.random_mode.value) {
 				randomEnabled = true;
 				CC.switchScene(Math.floor(Math.random() * 35));
-				intervalID = setInterval(function() { CC.switchScene(Math.floor(Math.random() * 35)); }, randomDelay * 1000 * 60)
+				intervalID = setInterval(function() { CC.switchScene(Math.floor(Math.random() * 35)); }, randomDelay * 1000 * 60);
 			}
 			else
 			{
@@ -107,11 +107,11 @@ window.wallpaperPropertyListener = {
 			randomDelay = properties.random_delay.value;
 			if (randomEnabled) {
 				clearInterval(intervalID);
-				intervalID = setInterval(function(){ CC.switchScene(Math.floor(Math.random() * 22)); }, randomDelay * 1000 * 60)
+				intervalID = setInterval(function(){ CC.switchScene(Math.floor(Math.random() * 22)); }, randomDelay * 1000 * 60);
 			}
 		}
 	}
-}
+};
 //#endregion WallpaperEngine
 
 var CanvasCycle = {
@@ -131,6 +131,8 @@ var CanvasCycle = {
 	sceneIdx: -1,
 	highlightColor: -1,
 	defaultMaxVolume: 0.5,
+	
+	audioVolume: 1,
 	
 	settings: {
 		showOptions: false,
@@ -479,7 +481,8 @@ var CanvasCycle = {
 			}
 			TweenManager.removeAll({ category: 'audio' });
 			
-			var ext = (ua.ff || ua.op) ? 'ogg' : 'mp3';
+			//var ext = (ua.ff || ua.op) ? 'ogg' : 'mp3';
+			var ext = 'mp3';
 			var track = this.audioTrack = new Audio( 'audio/' + scene.sound + '.' + ext );
 			track.volume = 0;
 			track.loop = true;
@@ -493,31 +496,12 @@ var CanvasCycle = {
 					duration: Math.floor( CanvasCycle.settings.targetFPS * 2 ),
 					mode: 'EaseOut',
 					algo: 'Linear',
-					props: { volume: scene.maxVolume || CanvasCycle.defaultMaxVolume },
+					props: { volume: scene.maxVolume * CC.audioVolume || CanvasCycle.defaultMaxVolume * CC.audioVolume },
 					category: 'audio'
 				});
 				CanvasCycle.hideLoading();
 				CanvasCycle.run();
 			}, false);
-			
-			if (ua.iphone || ua.ipad) {
-				// these may support audio, but just don't invoke events
-				// try to force it
-				setTimeout( function() {
-					track.play(); 
-					track.volume = 1.0;
-					CanvasCycle.hideLoading();
-					CanvasCycle.run();
-				}, 1000 );
-			}
-			
-			if (ua.ff || ua.mobile) {
-				// loop doesn't seem to work on FF or mobile devices, so let's force it
-				track.addEventListener('ended', function() {
-					track.currentTime = 0;
-					track.play();
-				}, false);
-			}
 			
 			track.load();
 		} // sound enabled and supported
