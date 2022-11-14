@@ -1,4 +1,6 @@
 {
+	"contentrating" : "Everyone",
+	"description" : "Various animated pixel art wallpapers created by Mark Ferrari, based on http://www.effectgames.com/demos/canvascycle/\r\n\r\nThe scenes in this wallpaper use color palette cycling to achieve smooth looping animations, meaning there are no videos used so it can scale nicely to high resolutions while still maintaining the sharp pixel art look.\r\n\r\nThis is still a fairly untested version, please let me know if you find any bugs.\r\n\r\nFeatures:\r\n- A total of 35 animated scenes\r\n- Wallpaper adjusts to screen resolution\r\n- Wallpaper can change randomly base on a set interval\r\n- Or choose a fixed wallpaper to display\r\n- Adjustable FPS limit to keep performance impact low\r\n- Adjustable animation speed\r\n- Optional ambient audio with adjustable volume for some scenes\r\n- Switch between smooth or classic color blending\r\n\r\n\r\nI have also created a wallpaper based on the Living Worlds scenes:\r\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2119347960",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -261,5 +263,12 @@
 			}
 		}
 	},
-	"title" : "canvas-cycle"
+	"preview" : "preview.gif",
+	"tags" : [ "Pixel art" ],
+	"title" : "Canvas Cycle - Animated Web Wallpaper",
+	"type" : "web",
+	"version" : 2,
+	"visibility" : "public",
+	"workshopid" : "2888304954",
+	"workshopurl" : "steam://url/CommunityFilePage/2888304954"
 }
