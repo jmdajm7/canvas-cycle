@@ -393,10 +393,10 @@ var CanvasCycle = {
 				this.clock++;
 				FrameCount.count();
 				this.scaleAnimate();
-				if (this.inGame) {
+				//if (this.inGame) {
 					// setTimeout( function() { CanvasCycle.animate(); }, 1 );
-					requestAnimationFrame( function() { CanvasCycle.animate(); } );
-				}
+					//requestAnimationFrame( function() { CanvasCycle.animate(); } );
+				//}
 			}
 		}
 	},
