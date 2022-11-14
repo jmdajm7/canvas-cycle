@@ -266,8 +266,8 @@
 	"preview" : "preview.gif",
 	"tags" : [ "Pixel art" ],
 	"title" : "Canvas Cycle - Animated Web Wallpaper",
-	"type" : "web",
-	"version" : 2,
+	"type" : "Web",
+	"version" : 3,
 	"visibility" : "public",
 	"workshopid" : "2888304954",
 	"workshopurl" : "steam://url/CommunityFilePage/2888304954"
