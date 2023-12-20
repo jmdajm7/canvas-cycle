@@ -99,15 +99,31 @@ window.wallpaperPropertyListener = {
 		}
 		
 		// RANDOM
+		var randomScene = function () {
+			var nextScene = 0;
+			while (true) {
+				nextScene = Math.floor(Math.random() * 35);
+				if (nextScene != selectedScene && !CC.recentScenes.includes(nextScene)) {
+					break;
+				}
+			}
+			CC.switchScene(nextScene);
+			CC.recentScenes.push(nextScene);
+			if (CC.recentScenes.length > 10) {
+				CC.recentScenes.shift();
+			}
+		};
+
 		if (properties.random_mode) {
 			console.log("random_mode: " + properties.random_mode.value);
 			
 			clearInterval(intervalID);
+			CC.recentScenes = [];
 		
 			if (properties.random_mode.value) {
 				randomEnabled = true;
 				CC.switchScene(Math.floor(Math.random() * 35));
-				intervalID = setInterval(function() { CC.switchScene(Math.floor(Math.random() * 35)); }, randomDelay * 1000 * 60);
+				intervalID = setInterval(randomScene, randomDelay * 1000 * 60);
 			}
 			else
 			{
@@ -125,7 +141,7 @@ window.wallpaperPropertyListener = {
 			randomDelay = properties.random_delay.value;
 			if (randomEnabled) {
 				clearInterval(intervalID);
-				intervalID = setInterval(function(){ CC.switchScene(Math.floor(Math.random() * 22)); }, randomDelay * 1000 * 60);
+				intervalID = setInterval(randomScene, randomDelay * 1000 * 60);
 			}
 		}
 	}
