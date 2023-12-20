@@ -44,12 +44,7 @@ window.wallpaperPropertyListener = {
 		if (properties.blend_shift) {
 			console.log("blend_shift: " + properties.blend_shift.value);
 			
-			if (properties.blend_shift.value) {
-				CC.settings.blendShiftEnabled = true;
-			}
-			else {
-				CC.settings.blendShiftEnabled = false;
-			}
+			CC.settings.blendShiftEnabled = properties.blend_shift.value;
 		}
 
 		// STRETCH
@@ -82,6 +77,13 @@ window.wallpaperPropertyListener = {
 			CC.audioVolume = properties.audio_volume.value;
 			CC.stopSceneAudio();
 			CC.startSceneAudio();
+		}
+
+		// SCENE TRANSITION FADE
+		if (properties.transition_fade) {
+			console.log("transition_fade: " + properties.transition_fade.value);
+
+			CC.settings.transitionFade = properties.transition_fade.value;
 		}
 		
 		///////////
@@ -156,7 +158,8 @@ var CanvasCycle = {
 		zoomFull: false,
 		blendShiftEnabled: true,
 		speedAdjust: 1.0,
-		sound: true
+		sound: true,
+		transitionFade: false
 	},
 
 	contentSize: {
@@ -249,13 +252,13 @@ var CanvasCycle = {
 		var name = scenes[menu].name;
 		this.sceneIdx = menu;
 		
-		if (ua.mobile) {
+		if (ua.mobile || !this.settings.transitionFade) {
 			// no transitions on mobile devices, just switch as fast as possible
 			this.inGame = false;
 			
 			this.ctx.clearRect(0, 0, this.bmp.width, this.bmp.height);
 			this.ctx.fillStyle = "rgb(0,0,0)";
-			this.ctx.fillRect (0, 0, this.bmp.width, this.bmp.height);
+			this.ctx.fillRect(0, 0, this.bmp.width, this.bmp.height);
 			
 			CanvasCycle.globalBrightness = 1.0;
 			CanvasCycle.loadImage( name );
@@ -329,7 +332,7 @@ var CanvasCycle = {
 			else return; // no canvas data support
 		}
 		
-		if (ua.mobile) {
+		if (ua.mobile || !this.settings.transitionFade) {
 			// no transition on mobile devices
 			this.globalBrightness = 1.0;
 		}

@@ -260,6 +260,12 @@
 				"text" : "Fit to Screen",
 				"type" : "combo",
 				"value" : "fill"
+			},
+			"transition_fade": {
+				"order": 100,
+				"text": "Scene transition fade",
+				"type": "bool",
+				"value": true
 			}
 		}
 	},
