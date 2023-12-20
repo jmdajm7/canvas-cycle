@@ -41,7 +41,8 @@ window.wallpaperPropertyListener = {
 		if (properties.stretch) {
 			console.log("stretch: " + properties.stretch.value);
 
-			document.getElementById("mycanvas").style = properties.stretch.value;
+			CC.stretch = properties.stretch.value;
+			CC.handleResize();
 		}
 		
 		// SOUND
@@ -464,6 +465,33 @@ var CanvasCycle = {
 		// called when window resizes
 		this.repositionContainer();
 		if (this.settings.zoomFull) this.scaleAnimate();
+
+		// custom scale logic
+		var canvas = document.getElementById('mycanvas');
+		var ratio = 640 / 480;
+		var width = window.innerWidth;
+		var height = window.innerHeight;
+
+		if (this.stretch === 'horizontal') {
+			// set the width of the canvas to match the height (multiplied by the ratio)
+			canvas.style.height = width / ratio + 'px';
+			canvas.style.width = width + 'px';
+		} 
+		else if (this.stretch === 'vertical') {
+			// set the height of the canvas to match the width (divided by the ratio)
+			canvas.style.width = height * ratio + 'px';
+			canvas.style.height = height + 'px';
+		}
+		else if (this.stretch === 'fill') {
+			// et the canvas to the window size
+			canvas.style.width = width + 'px';
+			canvas.style.height = height + 'px';
+		}
+		else {
+			// default resolution
+			canvas.style.width = '640px';
+			canvas.style.height = '480px';
+		}
 	},
 	
 	saveSettings: function() {

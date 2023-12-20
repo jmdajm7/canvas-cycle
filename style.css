@@ -8,6 +8,17 @@ body {
 	width: 2048px;
 }
 
+body,
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 a {
 	color: #888;
 	text-decoration: none;

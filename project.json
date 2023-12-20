@@ -241,25 +241,25 @@
 				[
 					{
 						"label" : "Stretch",
-						"value" : "height: 100vh; width: 100vw"
+						"value" : "fill"
 					},
 					{
 						"label" : "Horizontal",
-						"value" : "width: 100vw"
+						"value" : "horizontal"
 					},
 					{
 						"label" : "Vertical",
-						"value" : "height: 100vh"
+						"value" : "vertical"
 					},
 					{
 						"label" : "None",
-						"value" : ""
+						"value" : "none"
 					}
 				],
 				"order" : 65,
 				"text" : "Fit to Screen",
 				"type" : "combo",
-				"value" : "height: 100vh; width: 100vw"
+				"value" : "fill"
 			}
 		}
 	},

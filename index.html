@@ -36,7 +36,7 @@
 		</div>
 		<div id="d_loading"></div>
 		
-		<canvas id="mycanvas" width="640" height="480" style="height: 100vh; width: 100vw"></canvas>
+		<canvas id="mycanvas" width="640" height="480"></canvas>
 		
 		<div id="d_options" style="display: none;">
 			<div class="label">SOUND:</div>
@@ -64,9 +64,6 @@
 			
 			<div id="d_debug"></div>
 		</div>
-		
-		<!--<div class="clear"></div>-->
-
 	</div>
 		
 	<script language="JavaScript">
@@ -86,19 +83,6 @@
 			window.addEventListener( "resize", function() {
 				CC.handleResize();
 			}, false );
-		}
-		else if (window.attachEvent) {
-			// Bad browsers have to wait
-			/* window.attachEvent("onload", function() {
-				setTimeout( function() { CC.init(); }, 1000 );
-			});
-			
-			window.attachEvent("onresize", function() {
-				CC.handleResize();
-			}); */
-			
-			// chrome frame
-			// CFInstall.check({ mode: "overlay" });
 		}
 	</script>
 
